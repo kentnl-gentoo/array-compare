@@ -11,9 +11,12 @@
 #   This script is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-# $Id: Compare.pm,v 1.2 2000/06/04 17:43:14 dave Exp $
+# $Id: Compare.pm,v 1.3 2001/02/26 13:34:41 dave Exp $
 #
 # $Log: Compare.pm,v $
+# Revision 1.3  2001/02/26 13:34:41  dave
+# Added case insensitivity.
+#
 # Revision 1.2  2000/06/04 17:43:14  dave
 # Renamed 'manifest' and 'readme' to 'MANIFEST' and 'README'.
 # Added header info.
@@ -41,7 +44,7 @@ require Exporter;
 # We're an object, so don't export anything.
 @EXPORT = qw();
 # Grab the version from the RCS tag.
-$VERSION = sprintf "%d.%02d", '$Revision: 1.2 $ ' =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", '$Revision: 1.3 $ ' =~ /(\d+)\.(\d+)/;
 
 #
 # Default values.
@@ -55,6 +58,9 @@ $VERSION = sprintf "%d.%02d", '$Revision: 1.2 $ ' =~ /(\d+)\.(\d+)/;
 # whitespace characters are changed into a single space before the
 # comparison takes place. Default is 1 (whitespace is significant).
 #
+# Case - Flag that indicates whther or not the case of the data should
+# be significant in the comparison. Default is 1 (case is significant).
+#
 # Skip - a reference to a hash which contains the numbers of any columns
 # that should be skipped in the comparison. Default is an empty hash
 # (all columns are significant).
@@ -66,6 +72,7 @@ $VERSION = sprintf "%d.%02d", '$Revision: 1.2 $ ' =~ /(\d+)\.(\d+)/;
 #
 my %_defaults = (Sep => '^G',
 		 WhiteSpace => 1,
+                 Case => 1,
 		 Skip => {},
 		 DefFull => 0);
 
@@ -174,6 +181,12 @@ sub simple_compare {
     $str2 =~ s/\s+/ /g;
   }
 
+  # If case isn't significant, change to lower case
+  unless ($self->Case) {
+    $str1 = lc $str1;
+    $str2 = lc $str2;
+  }
+
   return $str1 eq $str2;
 }
 
@@ -226,6 +239,11 @@ sub full_compare {
     unless ($self->WhiteSpace) {
       $val1 =~ s/\s+/ /g;
       $val2 =~ s/\s+/ /g;
+    }
+
+    unless ($self->Case) {
+      $val1 = lc $val1;
+      $val2 = lc $val2;
     }
 
     push @diffs, $_ unless $val1 eq $val2;
@@ -298,11 +316,12 @@ Array::Compare - Perl extension for comparing arrays.
   use Array::Compare;
 
   my $comp1 = Array::Compare->new;
-  $comp->Sep = '|';
-  $comp->Skip = {3 => 1, 4 => 1};
-  $comp->WhiteSpace = 0;
+  $comp->Sep('|');
+  $comp->Skip({3 => 1, 4 => 1});
+  $comp->WhiteSpace(0);
+  $comp->Case(1);
 
-  my $comp2 = Array::Compare->new(Sep => '|', WhiteSpace => 0,
+  my $comp2 = Array::Compare->new(Sep => '|', WhiteSpace => 0, Case => 1,
                                   Skip => {3 => 1, 4 => 1});
 
   my @arr1 = 0 .. 10;
@@ -365,6 +384,17 @@ when creating a comparator object:
 or by altering an existing object:
 
   $comp->WhiteSpace(0);
+
+You can also control whether or not the case of the data is significant 
+in the comparison. The default is that the case of data is taken into 
+account. This can be changed in the standard ways when creating a new 
+comparator object:
+
+  my $comp = Array::Compare->new(Case => 0);
+
+or by altering an existing object:
+
+  $comp->Case(0);
 
 In addition to the simple comparison described above (which returns true
 if the arrays are the same and false if they're different) there is also
@@ -441,8 +471,8 @@ they contain the same elements but in a different order.
     print "Nope. Arrays are completely different\n";
   }
 
-In this case the value of C<WhiteSpace> is stil used, but C<Skip> is ignored
-for, hopefully, obvious reasons.
+In this case the values of C<WhiteSpace> and C<Case> are still used, 
+but C<Skip> is ignored for, hopefully, obvious reasons.
 
 =head1 AUTHOR
 

@@ -6,7 +6,7 @@
 # Change 1..1 below to 1..last_test_to_print .
 # (It may become useful if the test is moved to ./t subdirectory.)
 
-BEGIN { $| = 1; print "1..20\n"; }
+BEGIN { $| = 1; print "1..24\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use Array::Compare;
 $loaded = 1;
@@ -116,3 +116,20 @@ my @I = qw(4 3 6 5 2);
 print $comp->perm(\@F, \@G) ? '' : 'not ', "ok ", $i++, "\n";
 print $comp->perm(\@F, \@H) ? '' : 'not ', "ok ", $i++, "\n";
 print $comp->perm(\@F, \@I) ? 'not ' : '', "ok ", $i++, "\n";
+
+my @J = ('array with', 'white space');
+my @K = ('array  with', 'white	space');
+$comp->DefFull(0);
+print $comp->compare(\@J, \@K) ?  'not ' : '', "ok ", $i++, "\n";
+
+# Turn off whitespace
+$comp->WhiteSpace(0);
+print $comp->compare(\@J, \@K) ?  '' : 'not ', "ok ", $i++, "\n";
+
+my @L = qw(ArRay WiTh DiFfErEnT cAsEs);
+my @M = qw(aRrAY wItH dIfFeReNt CaSeS);
+print $comp->compare(\@L, \@M) ?  'not ' : '', "ok ", $i++, "\n";
+
+# Turn of case sensitivity
+$comp->Case(0);
+print $comp->compare(\@L, \@M) ?  '' : 'not ', "ok ", $i++, "\n";
