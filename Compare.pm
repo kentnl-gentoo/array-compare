@@ -11,7 +11,16 @@
 #   This script is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-# $Log:	Compare.pm,v $
+# $Id: Compare.pm,v 1.2 2000/06/04 17:43:14 dave Exp $
+#
+# $Log: Compare.pm,v $
+# Revision 1.2  2000/06/04 17:43:14  dave
+# Renamed 'manifest' and 'readme' to 'MANIFEST' and 'README'.
+# Added header info.
+#
+# Revision 1.1.1.1  2000/06/04 17:40:19  dave
+# CVS import
+#
 # Revision 0.2  00/05/13  14:23:48  14:23:48  dave (Dave Cross)
 # Added 'perm' method.
 # Revision 0.1  00/04/25  13:33:55  13:33:55  dave (Dave Cross)
@@ -32,7 +41,7 @@ require Exporter;
 # We're an object, so don't export anything.
 @EXPORT = qw();
 # Grab the version from the RCS tag.
-$VERSION = sprintf "%d.%02d", '$Revision: 0.2 $ ' =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", '$Revision: 1.2 $ ' =~ /(\d+)\.(\d+)/;
 
 #
 # Default values.
