@@ -12,6 +12,8 @@
 #   modify it under the same terms as Perl itself.
 #
 # $Log:	Compare.pm,v $
+# Revision 0.2  00/05/13  14:23:48  14:23:48  dave (Dave Cross)
+# Added 'perm' method.
 # Revision 0.1  00/04/25  13:33:55  13:33:55  dave (Dave Cross)
 # Initial version.
 #
@@ -30,7 +32,7 @@ require Exporter;
 # We're an object, so don't export anything.
 @EXPORT = qw();
 # Grab the version from the RCS tag.
-$VERSION = sprintf "%d.%02d", '$Revision: 0.1 $ ' =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", '$Revision: 0.2 $ ' =~ /(\d+)\.(\d+)/;
 
 #
 # Default values.
@@ -138,10 +140,16 @@ sub simple_compare {
   # from 0 to one less than the number of elements.
   my @check = 0 .. $#$row1;
 
+  my $caller = (caller(1))[3];
+  my $perm = $caller =~ m/::perm$/;
+
   # Filter @check so it only contains indexes that should be compared.
-  @check = grep {!(exists $self->Skip->{$_}
-		   && $self->Skip->{$_}) } @check
-		     if keys %{$self->Skip};
+  # N.B. Makes no sense to go this if we are called from 'perm'.
+  unless ($perm) {
+    @check = grep {!(exists $self->Skip->{$_}
+		     && $self->Skip->{$_}) } @check
+		       if keys %{$self->Skip};
+  }
 
   # Build two strings by taking array slices containing only the columns
   # that we shouldn't skip and joining those array slices using the Sep
@@ -215,6 +223,21 @@ sub full_compare {
   }
 
   return wantarray ? @diffs : scalar @diffs;
+}
+
+#
+# Check to see if one array is a permutation of the other (i.e. contains
+# the same set of elements, but in a different order).
+#
+# We do this by sorting the arrays and passing references to the assorted
+# versions to simple_compare. There are also some small changes to
+# simple_compare as it should ignore the Skip hash if we are called from
+# perm.
+#
+sub perm {
+  my $self = shift;
+
+  return $self->simple_compare([sort @{$_[0]}], [sort @{$_[1]}]);
 }
 
 #
@@ -400,6 +423,17 @@ hash to an empty hash.
 
   $comp->Skip({});
 
+You can also check to see if one array is a permutation of another, i.e.
+they contain the same elements but in a different order.
+
+  if ($comp->perm(\@a, \@b) {
+    print "Arrays are perms\n";
+  else {
+    print "Nope. Arrays are completely different\n";
+  }
+
+In this case the value of C<WhiteSpace> is stil used, but C<Skip> is ignored
+for, hopefully, obvious reasons.
 
 =head1 AUTHOR
 

@@ -19,7 +19,7 @@ Array::Compare uses the standard Perl module architecture and can
 therefore by installed using the standard Perl method which, in 
 brief, goes something like this:
 
-   gzcat Array-Compare-X.XX.tar.gz | tar xvf -
+   gzip -cd Array-Compare-X.XX.tar.gz | tar xvf -
    cd Array-Compare-X.XX
    perl Makefile.PL
    make

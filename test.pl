@@ -6,7 +6,7 @@
 # Change 1..1 below to 1..last_test_to_print .
 # (It may become useful if the test is moved to ./t subdirectory.)
 
-BEGIN { $| = 1; print "1..17\n"; }
+BEGIN { $| = 1; print "1..20\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use Array::Compare;
 $loaded = 1;
@@ -106,3 +106,13 @@ print scalar @diffs == 5 ?  '' : 'not ', "ok ", $i++, "\n";
 
 $diffs = $comp->compare(\@D, \@E);
 print $diffs == 5 ?  '' : 'not ', "ok ", $i++, "\n";
+
+# Test Perms
+my @F = (1 .. 5);
+my @G = qw(5 4 3 2 1);
+my @H = qw(3 4 1 2 5);
+my @I = qw(4 3 6 5 2);
+
+print $comp->perm(\@F, \@G) ? '' : 'not ', "ok ", $i++, "\n";
+print $comp->perm(\@F, \@H) ? '' : 'not ', "ok ", $i++, "\n";
+print $comp->perm(\@F, \@I) ? 'not ' : '', "ok ", $i++, "\n";
