@@ -11,9 +11,12 @@
 #   This script is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-# $Id: Compare.pm,v 1.9 2003/09/19 09:37:40 dave Exp $
+# $Id: Compare.pm,v 1.10 2004/10/22 20:32:48 dave Exp $
 #
 # $Log: Compare.pm,v $
+# Revision 1.10  2004/10/22 20:32:48  dave
+# Improved docs for full comparison
+#
 # Revision 1.9  2003/09/19 09:37:40  dave
 # Bring CVS version into line with old file
 #
@@ -56,7 +59,7 @@ use vars qw($VERSION $AUTOLOAD);
 use Carp;
 
 # Grab the version from the RCS tag.
-$VERSION = sprintf "%d.%02d", '$Revision: 1.9 $ ' =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", '$Revision: 1.10 $ ' =~ /(\d+)\.(\d+)/;
 
 #
 # Default values.
@@ -409,12 +412,13 @@ or by altering an existing object:
 
 In addition to the simple comparison described above (which returns true
 if the arrays are the same and false if they're different) there is also
-a full comparison which returns a list of elements which are different.
-If the arrays are the same it returns an empty list. In scalar context
-the full comparison returns the length of this list (i.e. the number
-of elements that differ). You can access the full comparision in two
-ways. Firstly, there is a C<DefFull> attribute. If this is C<true> then
-a full comparison if carried out whenever the C<compare> method is called.
+a full comparison which returns a list containing the indexes of elements
+which differ between the two arrays. If the arrays are the same it returns
+an empty list. In scalar context the full comparison returns the length of
+this list (i.e. the number of elements that differ). You can access the full
+comparision in two ways. Firstly, there is a C<DefFull> attribute. If this
+is C<true> then a full comparison if carried out whenever the C<compare>
+method is called.
 
   my $comp = Array::Compare->new(DefFull => 1);
   $comp->compare(\@arr1, \@arr2); # Full comparison
