@@ -11,9 +11,12 @@
 #   This script is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-# $Id: Compare.pm,v 1.10 2004/10/22 20:32:48 dave Exp $
+# $Id: Compare.pm,v 1.11 2004/10/23 08:11:32 dave Exp $
 #
 # $Log: Compare.pm,v $
+# Revision 1.11  2004/10/23 08:11:32  dave
+# Improved test coverage
+#
 # Revision 1.10  2004/10/22 20:32:48  dave
 # Improved docs for full comparison
 #
@@ -59,7 +62,7 @@ use vars qw($VERSION $AUTOLOAD);
 use Carp;
 
 # Grab the version from the RCS tag.
-$VERSION = sprintf "%d.%02d", '$Revision: 1.10 $ ' =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", '$Revision: 1.11 $ ' =~ /(\d+)\.(\d+)/;
 
 #
 # Default values.
@@ -98,11 +101,11 @@ my %_defaults = (Sep => '^G',
 # defaults given above.
 #
 sub new {
-  my $thing = shift;
+  my $class = shift;
 
   my $self = {%_defaults, @_};
 
-  bless $self, ref($thing) || $thing;
+  bless $self, $class;
 
   return $self;
 }
