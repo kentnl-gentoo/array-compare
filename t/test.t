@@ -1,24 +1,9 @@
 # Before `make install' is performed this script should be runnable with
 # `make test'. After `make install' it should work as `perl test.pl'
 
-######################### We start with some black magic to print on failure.
+use Test::More tests => 24;
 
-# Change 1..1 below to 1..last_test_to_print .
-# (It may become useful if the test is moved to ./t subdirectory.)
-
-BEGIN { $| = 1; print "1..24\n"; }
-END {print "not ok 1\n" unless $loaded;}
-use Array::Compare;
-$loaded = 1;
-print "ok 1\n";
-
-######################### End of black magic.
-
-# Insert your test code below (better if it prints "ok 13"
-# (correspondingly "not ok 13") depending on the success of chunk 13
-# of the test code):
-
-my $i = 2;
+use_ok('Array::Compare');
 
 my $comp = Array::Compare->new;
 
@@ -30,36 +15,33 @@ my %skip1 = (6 => 1);
 my %skip2 = (5 => 1);
 
 # Compare two different arrays - should fail
-print $comp->compare(\@A, \@B) ? 'not ' : '', "ok ", $i++, "\n";
+ok(not $comp->compare(\@A, \@B));
 
 # Compare two different arrays but ignore differing column - should succeed
 $comp->Skip(\%skip1);
-print $comp->compare(\@A, \@B) ? '' : 'not ', "ok ", $i++, "\n";
+ok($comp->compare(\@A, \@B));
 
 # compare two different arrays but ignore non-differing column - should fail
 $comp->Skip(\%skip2);
-print $comp->compare(\@A, \@B) ? 'not ' : '', "ok ", $i++, "\n";
+ok(not $comp->compare(\@A, \@B));
 
 # Change separator and compare two identical arrays - should succeed
 $comp->Sep('|');
-print $comp->compare(\@A, \@C) ? '' : 'not ', "ok ", $i++, "\n";
+ok($comp->compare(\@A, \@C));
 
 # These tests should generate fatal errors - hence the evals
 
 # Compare a number with an array
 eval { print $comp->compare(1, \@A) };
-#print "$@" if $@;
-print $@ ? '' : 'not ', "ok ", $i++, "\n";
+ok($@);
 
 # Compare an array with a number
 eval { print $comp->compare(\@A, 1) };
-#print "$@" if $@;
-print $@ ? '' : 'not ', "ok ", $i++, "\n";
+ok($@);
 
 # Call compare with only one argument
 eval { print $comp->compare(\@A) };
-#print "$@" if $@;
-print $@ ? '' : 'not ', "ok ", $i++, "\n";
+ok($@);
 
 # Switch to full comparison
 $comp->DefFull(1);
@@ -67,45 +49,44 @@ $comp->DefFull(1);
 # @A and @B differ in column 6
 # Array context
 my @diffs = $comp->compare(\@A, \@B);
-print scalar @diffs == 1 && $diffs[0] == 6 ?
-  '' : 'not ', "ok ", $i++, "\n";
+ok(scalar @diffs == 1 && $diffs[0] == 6);
 
 # Scalar context
 my $diffs =  $comp->compare(\@A, \@B);
-print $diffs ? '' : 'not ', "ok ", $i++, "\n";
+ok($diffs);
 
 # @A and @B differ in column 6 (which we ignore)
 $comp->Skip(\%skip1);
 # Array context
 @diffs = $comp->compare(\@A, \@B);
-print scalar @diffs == 0 ? '' : 'not ', "ok ", $i++, "\n";
+ok(not @diffs);
 
 # Scalar context
 $diffs = $comp->compare(\@A, \@B);
-print $diffs == 0 ? '' : 'not ', "ok ", $i++, "\n";
+ok(not $diffs);
 
 # @A and @C are the same
 # Array context
 @diffs = $comp->compare(\@A, \@C);
-print scalar @diffs == 0 ? '' : 'not ', "ok ", $i++, "\n";
+ok(not @diffs);
 
 # Scalar context
 $diffs = $comp->compare(\@A, \@C);
-print $diffs  ? 'not ' : '', "ok ", $i++, "\n";
+ok(not $diffs);
 
 # Test arrays of differing length
 my @D = (0 .. 5);
 my @E = (0 .. 10);
 
 $comp->DefFull(0);
-print $comp->compare(\@D, \@E) ?  'not ' : '', "ok ", $i++, "\n";
+ok( not $comp->compare(\@D, \@E));
 
 $comp->DefFull(1);
 @diffs = $comp->compare(\@D, \@E);
-print scalar @diffs == 5 ?  '' : 'not ', "ok ", $i++, "\n";
+ok(@diffs == 5);
 
 $diffs = $comp->compare(\@D, \@E);
-print $diffs == 5 ?  '' : 'not ', "ok ", $i++, "\n";
+ok($diffs == 5);
 
 # Test Perms
 my @F = (1 .. 5);
@@ -113,23 +94,23 @@ my @G = qw(5 4 3 2 1);
 my @H = qw(3 4 1 2 5);
 my @I = qw(4 3 6 5 2);
 
-print $comp->perm(\@F, \@G) ? '' : 'not ', "ok ", $i++, "\n";
-print $comp->perm(\@F, \@H) ? '' : 'not ', "ok ", $i++, "\n";
-print $comp->perm(\@F, \@I) ? 'not ' : '', "ok ", $i++, "\n";
+ok($comp->perm(\@F, \@G));
+ok($comp->perm(\@F, \@H));
+ok(not $comp->perm(\@F, \@I));
 
 my @J = ('array with', 'white space');
 my @K = ('array  with', 'white	space');
 $comp->DefFull(0);
-print $comp->compare(\@J, \@K) ?  'not ' : '', "ok ", $i++, "\n";
+ok(not $comp->compare(\@J, \@K));
 
 # Turn off whitespace
 $comp->WhiteSpace(0);
-print $comp->compare(\@J, \@K) ?  '' : 'not ', "ok ", $i++, "\n";
+ok($comp->compare(\@J, \@K));
 
 my @L = qw(ArRay WiTh DiFfErEnT cAsEs);
 my @M = qw(aRrAY wItH dIfFeReNt CaSeS);
-print $comp->compare(\@L, \@M) ?  'not ' : '', "ok ", $i++, "\n";
+ok(not $comp->compare(\@L, \@M));
 
 # Turn of case sensitivity
 $comp->Case(0);
-print $comp->compare(\@L, \@M) ?  '' : 'not ', "ok ", $i++, "\n";
+ok($comp->compare(\@L, \@M));

@@ -1,6 +1,9 @@
+Build.PL
 Changes
-Compare.pm
-MANIFEST
+lib/Array/Compare.pm
 Makefile.PL
-test.pl
+MANIFEST
+META.yml
 README
+t/pod.t
+t/test.t
