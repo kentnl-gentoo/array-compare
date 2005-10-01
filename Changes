@@ -1,12 +1,7 @@
-2005-03-01 09:05  dave
-
-	* lib/Array/Compare.pm (1.12), t/pod_coverage.t (1.1): Changes to
-	pass Pod::Coverage tests (and, hence, increase kwalitee)
-
 2004-10-23 09:11  dave
 
 	* lib/Array/Compare.pm (1.11), t/test.t (1.2): Improved test
-	coverage
+	  coverage
 
 2004-10-22 21:32  dave
 
@@ -21,14 +16,14 @@
 
 	* Makefile.PL (1.1): Added Makefile.PL
 	* MANIFEST (1.1), t/pod.t (1.1), t/test.t (1.1): Added various
-	files to cvs
+	  files to cvs
 
 2003-09-19 10:37  dave
 
 	* lib/Array/Compare.pm (1.9): Bring CVS version into line with old
-	file
+	  file
 	* Build.PL (1.1), Compare.pm (1.8), README.xml (1.2), test.pl
-	(1.2), lib/Array/Compare.pm (1.1): Bit of an overhaul
+	  (1.2), lib/Array/Compare.pm (1.1): Bit of an overhaul
 
 2002-03-29 17:45  dave
 

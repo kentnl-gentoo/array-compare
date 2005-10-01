@@ -1,6 +1,6 @@
---- #YAML:1.0
+---
 name: Array-Compare
-version: 1.12
+version: 1.13
 author:
   - Dave Cross <dave@mag-sol.com>
 abstract: Perl extension for comparing arrays.
@@ -10,5 +10,5 @@ requires:
 provides:
   Array::Compare:
     file: lib/Array/Compare.pm
-    version: 1.12
-generated_by: Module::Build version 0.2607
+    version: 1.13
+generated_by: Module::Build version 0.261
