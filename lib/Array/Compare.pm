@@ -1,5 +1,5 @@
 #
-# $Id: Compare.pm,v 1.13 2005/09/21 09:23:40 dave Exp $
+# $Id: Compare.pm 22 2007-04-01 15:03:22Z dave $
 #
 
 =head1 NAME
@@ -183,7 +183,7 @@ use vars qw($VERSION $AUTOLOAD);
 
 use Carp;
 
-$VERSION = sprintf "%d.%02d", '$Revision: 1.13 $ ' =~ /(\d+)\.(\d+)/;
+$VERSION = 1.14;
 
 my %_defaults = (Sep => '^G',
 		 WhiteSpace => 1,
@@ -503,7 +503,7 @@ under the same terms as Perl itself.
 =cut
 
 #
-# $Log: Compare.pm,v $
+# $Log$
 # Revision 1.13  2005/09/21 09:23:40  dave
 # Documentation fix
 #
