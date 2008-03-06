@@ -1,5 +1,5 @@
 #
-# $Id: Compare.pm 22 2007-04-01 15:03:22Z dave $
+# $Id: Compare.pm 28 2008-03-06 22:04:59Z dave $
 #
 
 =head1 NAME
@@ -178,12 +178,14 @@ but C<Skip> is ignored for, hopefully, obvious reasons.
 
 package Array::Compare;
 
+require 5.006_000;
 use strict;
-use vars qw($VERSION $AUTOLOAD);
+use warnings;
+our ($VERSION, $AUTOLOAD);
 
 use Carp;
 
-$VERSION = 1.14;
+$VERSION = 1.15;
 
 my %_defaults = (Sep => '^G',
 		 WhiteSpace => 1,
