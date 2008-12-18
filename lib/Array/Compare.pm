@@ -1,5 +1,5 @@
 #
-# $Id: Compare.pm 30 2008-06-29 14:04:29Z dave $
+# $Id: Compare.pm 33 2008-12-18 11:34:24Z dave $
 #
 
 =head1 NAME
@@ -185,7 +185,7 @@ our ($VERSION, $AUTOLOAD);
 
 use Carp;
 
-$VERSION = 1.15;
+($VERSION) = '$Id: Compare.pm 33 2008-12-18 11:34:24Z dave $' =~ /(\d+)/;
 
 my %_defaults = (Sep => '^G',
 		 WhiteSpace => 1,
