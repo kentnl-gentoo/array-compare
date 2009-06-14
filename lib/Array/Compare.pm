@@ -1,5 +1,5 @@
 #
-# $Id: Compare.pm 33 2008-12-18 11:34:24Z dave $
+# $Id$
 #
 
 =head1 NAME
@@ -185,7 +185,7 @@ our ($VERSION, $AUTOLOAD);
 
 use Carp;
 
-($VERSION) = '$Id: Compare.pm 33 2008-12-18 11:34:24Z dave $' =~ /(\d+)/;
+$VERSION = 1.18;
 
 my %_defaults = (Sep => '^G',
 		 WhiteSpace => 1,
@@ -325,6 +325,7 @@ sub simple_compare {
   my @check = 0 .. $#$row1;
 
   my ($pkg, $caller) = (caller(1))[0, 3];
+  $caller = '' unless defined $caller;
   my $perm = $caller eq __PACKAGE__ . "::perm";
 
   # Filter @check so it only contains indexes that should be compared.
