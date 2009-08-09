@@ -1,6 +1,6 @@
 ---
 name: Array-Compare
-version: 1.18
+version: 2.00
 author:
   - 'Dave Cross <dave@mag-sol.com>'
 abstract: Perl extension for comparing arrays.
@@ -9,11 +9,12 @@ resources:
   license: http://dev.perl.org/licenses/
 requires:
   Carp: 0
+  Moose: 0
   perl: 5.6.0
 provides:
   Array::Compare:
     file: lib/Array/Compare.pm
-    version: 1.18
+    version: 2.00
 generated_by: Module::Build version 0.32
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

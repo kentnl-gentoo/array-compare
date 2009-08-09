@@ -6,7 +6,8 @@ WriteMakefile
           'NAME' => 'Array::Compare',
           'VERSION_FROM' => 'lib/Array/Compare.pm',
           'PREREQ_PM' => {
-                           'Carp' => 0
+                           'Carp' => 0,
+                           'Moose' => 0
                          },
           'INSTALLDIRS' => 'site',
           'EXE_FILES' => []
