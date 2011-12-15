@@ -1,21 +1,26 @@
 ---
-name: Array-Compare
-version: 2.01
+abstract: 'Perl extension for comparing arrays.'
 author:
   - 'Dave Cross <dave@mag-sol.com>'
-abstract: Perl extension for comparing arrays.
+build_requires:
+  Test::NoWarnings: 0
+configure_requires:
+  Module::Build: 0.38
+dynamic_config: 1
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.112150'
 license: perl
-resources:
-  license: http://dev.perl.org/licenses/
-requires:
-  Carp: 0
-  Moose: 0
-  perl: 5.6.0
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Array-Compare
 provides:
   Array::Compare:
     file: lib/Array/Compare.pm
-    version: 2.01
-generated_by: Module::Build version 0.32
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+    version: 2.02
+requires:
+  Carp: 0
+  Moose: 0
+  perl: v5.6.0
+resources:
+  license: http://dev.perl.org/licenses/
+version: 2.02

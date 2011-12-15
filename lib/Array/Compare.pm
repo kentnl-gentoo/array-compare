@@ -186,7 +186,7 @@ our ($VERSION, $AUTOLOAD);
 use Moose;
 use Carp;
 
-$VERSION = '2.01';
+$VERSION = '2.02';
 
 has Sep        => ( is => 'rw', isa => 'Str',     default => '^G' );
 has WhiteSpace => ( is => 'rw', isa => 'Bool',    default => 1 );
@@ -212,7 +212,7 @@ Default is '^G'.
 =item WhiteSpace
 
 Flag that indicates whether or not whitespace is significant in the
-comparison. If this value is true then all multiple whitespace characters
+comparison. If this value is false then all multiple whitespace characters
 are changed into a single space before the comparison takes place. Default
 is 1 (whitespace is significant).
 
@@ -332,8 +332,8 @@ sub simple_compare {
   # character. Hopefully we can then just do a string comparison.
   # Note: this makes the function liable to errors if your arrays
   # contain the separator character.
-  my $str1 = join($self->Sep, @{$row1}[@check]);
-  my $str2 = join($self->Sep, @{$row2}[@check]);
+  my $str1 = join($self->Sep, map { defined $_ ? $_ : '' } @{$row1}[@check]);
+  my $str2 = join($self->Sep, map { defined $_ ? $_ : '' } @{$row2}[@check]);
 
   # If whitespace isn't significant, collapse it
   unless ($self->WhiteSpace) {
@@ -406,6 +406,15 @@ sub full_compare {
     next if keys %{$self->Skip} && $self->Skip->{$_};
 
     my ($val1, $val2) = ($arr1->[$_], $arr2->[$_]);
+
+    next unless defined $val1 or defined $val2;
+
+    if ((defined $val1 and not defined $val2)
+      or (defined $val2 and not defined $val1)) {
+      push @diffs, $_;
+      next;
+    }
+
     unless ($self->WhiteSpace) {
       $val1 =~ s/\s+/ /g;
       $val2 =~ s/\s+/ /g;

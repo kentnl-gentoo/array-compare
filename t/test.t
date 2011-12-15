@@ -1,7 +1,6 @@
-# Before `make install' is performed this script should be runnable with
-# `make test'. After `make install' it should work as `perl test.pl'
 
-use Test::More tests => 30;
+use Test::More 'no_plan';
+use Test::NoWarnings;
 
 use_ok('Array::Compare');
 
@@ -134,3 +133,12 @@ ok($comp->compare(\@L, \@M));
 
 $comp->DefFull(1);
 ok(not $comp->compare(\@L, \@M));
+
+my @N = (undef, 1 .. 3);
+my @O = (undef, 1 .. 3);
+
+$comp->DefFull(0);
+ok($comp->compare(\@N, \@O));
+
+$comp->DefFull(1);
+ok(not $comp->compare(\@N, \@O));
