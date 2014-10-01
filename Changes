@@ -1,129 +1,262 @@
-2011-12-15  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Wed Oct  1 15:41:00 CEST 2014 - dave@dave.org.uk
 
-  * Build.PL, lib/Array/Compare.pm, t/test.t: Tests and fixes for RT bug 73287
-  (thanks to Andrew Solomon) Bump version number
+- Ported from Moose to Moo
+- commit 753a3c7
 
-2011-02-17  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Fri Jan 10 15:00:14 CET 2014 - dave@dave.org.uk
 
-  * t/test.t: Removed old Perl 4-ish test comments.
+- Added .travis.yml
+- commit 98b520e
 
-2009-09-02  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Thu Dec 15 22:20:31 CET 2011 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm: Correct documentation of 'WhiteSpace' option.
+- More fixes for undef values.
+- commit 56495f2
 
-2009-08-29  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Thu Dec 15 18:23:36 CET 2011 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm: Bump version number.
+- Tests and fixes for RT bug 73287 (thanks to Andrew Solomon)
+  Bump version number
+- Tests and fixes for RT bug 73287 (thanks to Andrew Soloman)
+  Bump version number
+- commit 22c8987
 
-2009-08-09  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Thu Feb 17 14:25:18 CET 2011 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm: Corrected version number.
+- Removed old Perl 4-ish test comments.
+- commit 763c4da
 
-  * Build.PL: Bumped version number.
+-------------------------------------------------------------------
+Wed Sep  2 14:27:00 CEST 2009 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm: Switched to using Moose.
+- Correct documentation of 'WhiteSpace' option.
+- commit 532524a
 
-2009-06-14  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Sat Aug 29 17:05:56 CEST 2009 - dave@dave.org.uk
 
-  * README, README.xml: Renames README.xml
+- Bump version number.
+- commit a262ffc
 
-  * lib/Array/Compare.pm: Bump version number for release.
+-------------------------------------------------------------------
+Sun Aug  9 21:03:53 CEST 2009 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm: Added version number. Fixed
-  https://rt.cpan.org/Ticket/Display.html?id=45145
+- Corrected version number.
+- commit a985589
 
-  * Build.PL: Moved version setting into .pm.
+-------------------------------------------------------------------
+Sun Aug  9 21:00:41 CEST 2009 - dave@dave.org.uk
 
-2009-02-21  Dave Cross <dave@dave.org.uk>
+- Bumped version number.
+- commit 25853dd
 
-  * : Removed execute bit.
+-------------------------------------------------------------------
+Sun Aug  9 21:00:14 CEST 2009 - dave@dave.org.uk
 
-2008-06-29  Dave Cross <dave@dave.org.uk>
+- Switched to using Moose.
+- commit 220f058
 
-  * Build.PL, lib/Array/Compare.pm: Added LICENSE section (for cpants).
+-------------------------------------------------------------------
+Sun Jun 14 21:11:21 CEST 2009 - dave@dave.org.uk
 
-2008-03-06  Dave Cross <dave@dave.org.uk>
+- Renames README.xml
+- commit 3f25ef1
 
-  * lib/Array/Compare.pm: Increment version number
+-------------------------------------------------------------------
+Sun Jun 14 19:58:29 CEST 2009 - dave@dave.org.uk
 
-  * Build.PL: Fix prerequisites
+- Bump version number for release.
+- commit 4a288d2
 
-  * lib/Array/Compare.pm: Require Perl 5.6 so we can use warnings and our.
+-------------------------------------------------------------------
+Sun Jun 14 19:56:15 CEST 2009 - dave@dave.org.uk
 
-2007-04-04  Dave Cross <dave@dave.org.uk>
+- Added version number.
+  Fixed https://rt.cpan.org/Ticket/Display.html?id=45145
+- commit 58ace45
 
-  * : Another attempt at removing the execute bit
+-------------------------------------------------------------------
+Sun Jun 14 19:55:55 CEST 2009 - dave@dave.org.uk
 
-2007-04-02  Dave Cross <dave@dave.org.uk>
+- Moved version setting into .pm.
+- commit ffcdc2f
 
-  * Build.PL: Made Build.PL non-executable
+-------------------------------------------------------------------
+Sat Feb 21 23:08:22 CET 2009 - dave@dave.org.uk
 
-2007-04-01  Dave Cross <dave@dave.org.uk>
+- Removed execute bit.
+- commit d146a1f
 
-  * README.xml: Updated copyright dates
+-------------------------------------------------------------------
+Sun Jun 29 16:04:29 CEST 2008 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm: Changed $VERSION definition
+- Added LICENSE section (for cpants).
+- commit f41bdfd
 
-  * Build.PL: Changed create_makefile_pl parameter to 'traditional'
+-------------------------------------------------------------------
+Thu Mar  6 23:04:59 CET 2008 - dave@dave.org.uk
 
-2005-10-01  Dave Cross <dave@dave.org.uk>
+- Increment version number
+- commit 1453522
 
-  * MANIFEST: Reordering
+-------------------------------------------------------------------
+Thu Mar  6 23:04:04 CET 2008 - dave@dave.org.uk
 
-2005-09-21  Dave Cross <dave@dave.org.uk>
+- Fix prerequisites
+- commit d06f5a3
 
-  * lib/Array/Compare.pm: Documentation fix
+-------------------------------------------------------------------
+Thu Mar  6 23:03:11 CET 2008 - dave@dave.org.uk
 
-2005-07-10  Dave Cross <dave@dave.org.uk>
+- Require Perl 5.6 so we can use warnings and our.
+- commit c8690e9
 
-  * MANIFEST: Added t/pod_coverage to MANIFEST
+-------------------------------------------------------------------
+Wed Apr  4 08:16:32 CEST 2007 - dave@dave.org.uk
 
-  * Makefile.PL: Removed Makefile.PL (which is autogenerated)
+- Another attempt at removing the execute bit
+- commit 9661677
 
-2005-03-01  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Mon Apr  2 09:26:30 CEST 2007 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm, t/pod_coverage.t: Changes to pass Pod::Coverage tests
-  (and, hence, increase kwalitee)
+- Made Build.PL non-executable
+- commit 4690bb3
 
-2004-10-23  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Sun Apr  1 17:11:25 CEST 2007 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm, t/test.t: Improved test coverage
+- Updated copyright dates
+- commit 32f9b57
 
-2004-10-22  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Sun Apr  1 17:03:22 CEST 2007 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm: Improved docs for full comparison
+- Changed $VERSION definition
+- commit 96d6806
 
-  * t/pod.t: Updated pod tests
+-------------------------------------------------------------------
+Sun Apr  1 16:55:23 CEST 2007 - dave@dave.org.uk
 
-2004-05-13  Dave Cross <dave@dave.org.uk>
+- Changed create_makefile_pl parameter to 'traditional'
+- commit cf04003
 
-  * README.xml: Small formatting changes
+-------------------------------------------------------------------
+Sat Oct  1 19:17:22 CEST 2005 - dave@dave.org.uk
 
-2004-05-12  Dave Cross <dave@dave.org.uk>
+- Reordering
+- commit 76195c6
 
-  * Makefile.PL: Added Makefile.PL
+-------------------------------------------------------------------
+Wed Sep 21 11:23:40 CEST 2005 - dave@dave.org.uk
 
-  * MANIFEST, t/pod.t, t/test.t: Added various files to cvs
+- Documentation fix
+- commit 8071462
 
-2003-09-19  Dave Cross <dave@dave.org.uk>
+-------------------------------------------------------------------
+Sun Jul 10 14:33:39 CEST 2005 - dave@dave.org.uk
 
-  * lib/Array/Compare.pm: Bring CVS version into line with old file
+- Added t/pod_coverage to MANIFEST
+- commit c28ff1c
 
-  * Build.PL, Compare.pm, README.xml, lib/Array/Compare.pm, test.pl: Bit of an
-  overhaul
+-------------------------------------------------------------------
+Sun Jul 10 14:33:04 CEST 2005 - dave@dave.org.uk
 
-2002-03-29  Dave Cross <dave@dave.org.uk>
+- Removed Makefile.PL (which is autogenerated)
+- commit afddc5d
 
-  * Compare.pm: Test version
+-------------------------------------------------------------------
+Tue Mar  1 10:05:33 CET 2005 - dave@dave.org.uk
 
-  * README.xml: README input file
+- Changes to pass Pod::Coverage tests (and, hence, increase kwalitee)
+- commit c9d8434
 
-  * test.pl: Test script.
+-------------------------------------------------------------------
+Sat Oct 23 10:11:32 CEST 2004 - dave@dave.org.uk
 
-2002-01-09  Dave Cross <dave@dave.org.uk>
+- Improved test coverage
+- commit a48e05c
 
-  * Compare.pm: Small cleanups
+-------------------------------------------------------------------
+Fri Oct 22 22:32:48 CEST 2004 - dave@dave.org.uk
 
-2001-12-09  Dave Cross <dave@dave.org.uk>
+- Improved docs for full comparison
+- commit 612b14b
 
-  * Compare.pm: Cleanup.
+-------------------------------------------------------------------
+Fri Oct 22 22:17:08 CEST 2004 - dave@dave.org.uk
+
+- Updated pod tests
+- commit 1eed7b7
+
+-------------------------------------------------------------------
+Thu May 13 22:01:58 CEST 2004 - dave@dave.org.uk
+
+- Small formatting changes
+- commit 250b1f3
+
+-------------------------------------------------------------------
+Thu May 13 00:52:24 CEST 2004 - dave@dave.org.uk
+
+- Added Makefile.PL
+- commit de64fde
+
+-------------------------------------------------------------------
+Thu May 13 00:49:02 CEST 2004 - dave@dave.org.uk
+
+- Added various files to cvs
+- commit 7b65234
+
+-------------------------------------------------------------------
+Fri Sep 19 11:37:40 CEST 2003 - dave@dave.org.uk
+
+- Bring CVS version into line with old file
+- commit 47074ab
+
+-------------------------------------------------------------------
+Fri Sep 19 11:34:43 CEST 2003 - dave@dave.org.uk
+
+- Bit of an overhaul
+- commit f67f37c
+
+-------------------------------------------------------------------
+Fri Mar 29 18:45:09 CET 2002 - dave@dave.org.uk
+
+- Test version
+- commit ecefb3d
+
+-------------------------------------------------------------------
+Fri Mar 29 18:44:05 CET 2002 - dave@dave.org.uk
+
+- README input file
+- commit cb67625
+
+-------------------------------------------------------------------
+Fri Mar 29 18:43:50 CET 2002 - dave@dave.org.uk
+
+- Test script.
+- commit 5f7b15b
+
+-------------------------------------------------------------------
+Wed Jan  9 12:41:52 CET 2002 - dave@dave.org.uk
+
+- Small cleanups
+- commit 1eb540f
+
+-------------------------------------------------------------------
+Sun Dec  9 20:31:47 CET 2001 - dave@dave.org.uk
+
+- Cleanup.
+- commit 475fbea
+
+-------------------------------------------------------------------
+Sun Dec  9 20:31:47 CET 2001 - (no author)
+
+- New repository initialized by cvs2svn.
+- commit 2e57c5d
+
