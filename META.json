@@ -4,7 +4,7 @@
       "Dave Cross <dave@mag-sol.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.132140",
+   "generated_by" : "Module::Build version 0.4214",
    "license" : [
       "perl_5"
    ],
@@ -21,7 +21,7 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.40"
+            "Module::Build" : "0.42"
          }
       },
       "runtime" : {
@@ -36,14 +36,18 @@
    "provides" : {
       "Array::Compare" : {
          "file" : "lib/Array/Compare.pm",
-         "version" : "2.11"
+         "version" : "2.12"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "license" : [
          "http://dev.perl.org/licenses/"
-      ]
+      ],
+      "repository" : {
+         "url" : "https://github.com/davorg/array-compare"
+      }
    },
-   "version" : "2.11"
+   "version" : "2.12",
+   "x_serialization_backend" : "JSON::PP version 2.27300"
 }
