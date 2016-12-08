@@ -36,7 +36,7 @@
    "provides" : {
       "Array::Compare" : {
          "file" : "lib/Array/Compare.pm",
-         "version" : "v2.12.1"
+         "version" : "v2.12.2"
       }
    },
    "release_status" : "stable",
@@ -46,10 +46,10 @@
       ],
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/davorg/audiofile-info.git",
-         "web" : "https://github.com/davorg/audiofile-info"
+         "url" : "https://github.com/davorg/array-compare.git",
+         "web" : "https://github.com/davorg/array-compare"
       }
    },
-   "version" : "v2.12.1",
+   "version" : "v2.12.2",
    "x_serialization_backend" : "JSON::PP version 2.27400"
 }
